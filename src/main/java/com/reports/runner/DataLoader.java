@@ -21,6 +21,8 @@ public class DataLoader implements ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		
+		repo.deleteAll();
+		
 		CitizenPlan c1=new CitizenPlan();
 		c1.setCitizenName("swapnil");
 		c1.setPlanName("Cash");
