@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import com.reports.dto.SearchDto;
 import com.reports.entity.CitizenPlan;
 
-@Service
 public interface ReportService {
 
 	public List<String> getPlanName();
