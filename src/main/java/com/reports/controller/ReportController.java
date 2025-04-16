@@ -13,6 +13,8 @@ import com.reports.dto.SearchDto;
 import com.reports.entity.CitizenPlan;
 import com.reports.service.ReportService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
 @Controller
 public class ReportController {
 
@@ -39,5 +41,20 @@ public class ReportController {
 		model.addAttribute("search", searchobj);
 		init(model);
 		return "index";
+	}
+	
+	@GetMapping("/excel")
+	public void exportExcel (HttpServletResponse response) throws Exception {
+		
+		response.setContentType("application/octet-stream");
+		response.setHeader("Content-Disposition", "attachment;filename=plans.xls");
+		reportservice.exportExcel(response);
+	}
+	
+	@GetMapping("/pdf")
+	public void exportPdf(HttpServletResponse response) throws Exception{
+		response.setContentType("application/pdf");
+		response.setHeader("Content-Disposition", "attachment;filename=plans.pdf");
+		reportservice.exportPdf(response);
 	}
 }
